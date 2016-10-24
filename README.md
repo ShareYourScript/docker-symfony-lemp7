@@ -1,4 +1,4 @@
-![nginx stable](https://img.shields.io/badge/nginx-stable-brightgreen.svg) ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg) 
+![nginx stable](https://img.shields.io/badge/nginx-stable-brightgreen.svg?style=plastic) ![php 7](https://img.shields.io/badge/php-7-yellowgreen.svg?style=plastic) ![mysql 5.6](https://img.shields.io/badge/mysql-5.6-yellow.svg?style=plastic) ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic) 
 
 Symfony-lemp7 sets up 3 containers running nginx, PHP7 and MySQL 5.6.
 
