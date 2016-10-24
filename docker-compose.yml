@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:5.6
+    container_name: symfony-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=mysql"
+      - "MYSQL_USER=user"
+      - "MYSQL_PASSWORD=password"
+      - "MYSQL_DATABASE=dbname" 
+    volumes:
+      - ./mysql-data:/var/lib/mysql:rw
+      - ./mysql/conf.d/custom.cnf:/etc/mysql/conf.d/custom.cnf:ro
+      - ./mysql/conf.d/my.cnf:/etc/mysql/my.cnf:ro
+  php:
+    build: ./php/
+    container_name: symfony-php
+    volumes:
+        - "./www:/var/www/html:rw"
+        - "./php/conf.d/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro"
+    links:
+        - "db:db"
+    working_dir: "/var/www/html"
+  nginx:
+    build: ./nginx/
+    container_name: symfony-nginx
+    ports:
+      - "81:80"
+    links:
+      - "php:php"
+    volumes:
+      - "./www:/var/www/html:rw"
+      - "./nginx/conf/default.conf:/etc/nginx/conf.d/default.conf:ro"
+      - "./logs:/var/log/nginx:rw"

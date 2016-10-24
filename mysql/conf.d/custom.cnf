@@ -1,0 +1,14 @@
+[mysqld]
+
+character-set-server = utf8
+ 
+innodb_large_prefix = 1
+innodb_file_format = barracuda
+innodb_file_per_table = 1
+innodb_buffer_pool_size = 256M
+max_allowed_packet = 32M
+  
+#query_cache_size = 32M
+#tmp_table_size = 32M
+#max_heap_table_size = 32M
+#table_cache = 8000
